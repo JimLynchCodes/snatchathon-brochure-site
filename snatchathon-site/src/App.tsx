@@ -326,6 +326,11 @@ export default function SnatchathonFlyer() {
               <b style={{ color: COLORS.yellow }}>partner gyms where you can train</b> for
               Snatchathon coming soon...
             </div>
+            <div style={{height: "0.75rem"}}></div>
+            <div style={{ fontSize: 12.5, color: COLORS.cream, lineHeight: 1.5 }}>
+              Sign up for our newsletter at:&nbsp;
+              <a href="https://forms.gle/vPBxJAnBvCfXigvb6">https://forms.gle/vPBxJAnBvCfXigvb6</a>
+            </div>
           </div>
           <div style={{ marginTop: 16, fontSize: 9.5, color: COLORS.dim, letterSpacing: ".06em" }}>
             ONE BARBELL, DUMBBELL, OR KETTLEBELL · THREE ERG MACHINES · ZERO EXCUSES
