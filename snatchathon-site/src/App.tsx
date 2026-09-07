@@ -103,20 +103,20 @@ function HazardStripe() {
 // };
 
 const WEIGHT_CLASSES = [
-  { weight: 10,  colorName: "Pink",   hex: "#ff69b4", utility: "Ultra-Light / Technique Work" },
-  { weight: 20,  colorName: "White",  hex: "#ffffff", utility: "Warm-Up / Core Prep" },
-  { weight: 35,  colorName: "Tan",    hex: "#d2b48c", utility: "Light Working Set" },
-  { weight: 50,  colorName: "Maroon", hex: "#800000", utility: "Light-Medium Threshold" },
-  { weight: 65,  colorName: "Orange", hex: "#ff8c00", utility: "Medium Working Set" },
-  { weight: 80,  colorName: "Teal",   hex: "#008080", utility: "Medium-Heavy Threshold" },
-  { weight: 95,  colorName: "Green",  hex: "#228b22", utility: "Heavy Working Set" },
-  { weight: 115, colorName: "Yellow", hex: "#ffd400", utility: "Advanced Strength" },
-  { weight: 135, colorName: "Blue",   hex: "#1e90ff", utility: "Standard Milestone (1-Plate)" },
-  { weight: 160, colorName: "Red",    hex: "#ff0000", utility: "High-Tier Working Weight" },
-  { weight: 190, colorName: "Brown",  hex: "#8b4513", utility: "Elite Strength Threshold" },
-  { weight: 225, colorName: "Black",  hex: "#333333", utility: "Heavy Milestone (2-Plate)" },
-  { weight: 265, colorName: "Steel",  hex: "#a9a9a9", utility: "Super-Heavy Working Weight" },
-  { weight: 315, colorName: "Gold",   hex: "#d4af37", utility: "Top Tier Milestone (3-Plate)" },
+  { weight: 10,  colorName: "Pink",   hex: "#ff69b4" },
+  { weight: 20,  colorName: "White",  hex: "#ffffff" },
+  { weight: 35,  colorName: "Tan",    hex: "#d2b48c" },
+  { weight: 50,  colorName: "Maroon", hex: "#800000" },
+  { weight: 65,  colorName: "Orange", hex: "#ff8c00" },
+  { weight: 80,  colorName: "Teal",   hex: "#008080" },
+  { weight: 95,  colorName: "Green",  hex: "#228b22" },
+  { weight: 115, colorName: "Yellow", hex: "#ffd400" },
+  { weight: 135, colorName: "Blue",   hex: "#1e90ff" },
+  { weight: 160, colorName: "Red",    hex: "#ff0000" },
+  { weight: 190, colorName: "Brown",  hex: "#8b4513" },
+  { weight: 225, colorName: "Black",  hex: "#333333" },
+  { weight: 265, colorName: "Steel",  hex: "#a9a9a9" },
+  { weight: 315, colorName: "Gold",   hex: "#d4af37" },
 ];
 
 export function WeightClassTable() {
@@ -150,7 +150,7 @@ export function WeightClassTable() {
       {/* Responsive Table Wrapper */}
       <div style={{ overflowX: "auto", display: "flex", justifyContent: "center" }}>
         <table style={{ 
-          width: "80%", 
+          width: "90%", 
           alignItems: "center",
           borderCollapse: "collapse", 
           textAlign: "center",
@@ -158,9 +158,9 @@ export function WeightClassTable() {
         }}>
           <thead>
             <tr style={{ borderBottom: `2px solid ${COLORS.yellow}` }}>
-              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px" }}>WEIGHT</th>
-              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px", textAlign: "left"}}>COLOR CODE</th>
-              {/* <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow }}>GYM UTILITY</th> */}
+              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px" }}>LBS</th>
+              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px" }}>KG</th>
+              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px", textAlign: "center"}}>COLOR CODING</th>
             </tr>
           </thead>
           <tbody>
@@ -169,21 +169,31 @@ export function WeightClassTable() {
                 key={index} 
                 style={{ 
                   borderBottom: "1px solid #2a2a26",
-                  transition: "background 0.2s",
+                  transition: "background 0.2s"
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = COLORS.cream}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = COLORS.cream;
+                  e.currentTarget.style.color = COLORS.dim;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = COLORS.cream;
+                }}
               >
-                {/* Weight Cell */}
-                <td style={{ padding: "14px 16px", fontWeight: "700", fontFamily: "'Anton', sans-serif", fontSize: "18px", letterSpacing: "0.02em" }}>
+                {/* LBS Cell */}
+                <td style={{ padding: "14px 16px", fontWeight: "700", fontFamily: "'Anton', sans-serif", fontSize: "18px", letterSpacing: "0.02em", maxWidth: "20px" }}>
                   {item.weight} <span style={{ fontSize: "11px", fontFamily: "'Archivo', sans-serif", color: COLORS.dim, fontWeight: "500" }}>LBS</span>
+                </td>
+
+                {/* KG Cell */}
+                <td style={{ padding: "14px 16px", fontWeight: "700", fontFamily: "'Anton', sans-serif", fontSize: "18px", letterSpacing: "0.02em" }}>
+                  {(item.weight * 0.453592).toFixed(1)} <span style={{ fontSize: "11px", fontFamily: "'Archivo', sans-serif", color: COLORS.dim, fontWeight: "500" }}>KG</span>
                 </td>
                 
                 {/* Color Dot + Name Cell */}
-                <td style={{ padding: "14px 16px", fontWeight: "600" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", textAlign: "center" }}>
+                <td style={{fontWeight: "600", padding: "0 1rem 0 5rem"}}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px"}}>
                     <span style={{ 
-                      // display: "inline-block", 
                       width: "14px", 
                       height: "14px", 
                       borderRadius: "50%", 
@@ -194,15 +204,195 @@ export function WeightClassTable() {
                     {item.colorName}
                   </div>
                 </td>
-                
-                {/* Utility Context Cell */}
-                {/* <td style={{ padding: "14px 16px", color: COLORS.dim, fontWeight: "500" }}>
-                  {item.utility}
-                </td> */}
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+    </div>
+  );
+}
+
+export function TrainingAndSponsors() {
+  return (
+    <div
+      style={{
+        background: COLORS.black,
+        padding: "32px 24px",
+        fontFamily: "'Archivo', sans-serif",
+        color: COLORS.cream,
+        maxWidth: "760px",
+        margin: "0 auto",
+        border: "1px solid #2a2a26",
+        borderTop: "none",
+      }}
+    >
+      {/* Scaled Training Section */}
+      <div style={{ textAlign: "center", marginBottom: "32px" }}>
+        <h2
+          style={{
+            fontFamily: "'Anton', sans-serif",
+            color: COLORS.yellow,
+            fontSize: "24px",
+            letterSpacing: "0.03em",
+            margin: "0 0 8px 0",
+            textTransform: "uppercase",
+            lineHeight: 1.2,
+          }}
+        >
+          Don't have time to do a full Snatchathon?
+        </h2>
+        <p style={{ color: COLORS.cream, fontSize: "14px", margin: "0 auto", maxWidth: "540px" }}>
+          Try these scaled down versions for training!
+        </p>
+
+        {/* Scaled Cards Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "16px",
+            marginTop: "24px",
+            textAlign: "left",
+          }}
+        >
+          {/* Snatchathon Half */}
+          <div
+            style={{
+              border: "1px solid #2a2a26",
+              background: "#121210",
+              padding: "20px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+                <h3
+                  style={{
+                    fontFamily: "'Anton', sans-serif",
+                    fontSize: "20px",
+                    color: COLORS.yellow,
+                    margin: 0,
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  SNATCHATHON HALF
+                </h3>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    padding: "3px 8px",
+                    background: COLORS.yellow,
+                    color: COLORS.black,
+                    fontWeight: "800",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  50% VOLUME
+                </span>
+              </div>
+              <p style={{ fontSize: "13px", color: COLORS.cream, margin: "0 0 16px 0", lineHeight: "1.5" }}>
+                Cut all reps and monostructural distances in half (1,000m erg efforts). Excellent for mid-week threshold conditioning and pacing practice.
+              </p>
+            </div>
+            <div style={{ fontSize: "11px", color: COLORS.dim, fontWeight: "700", letterSpacing: "0.06em" }}>
+              • 140 TOTAL REPS • 6KM MONOSTRUCTURAL
+            </div>
+          </div>
+
+          {/* Snatchathon Quarter */}
+          <div
+            style={{
+              border: "1px solid #2a2a26",
+              background: "#121210",
+              padding: "20px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+                <h3
+                  style={{
+                    fontFamily: "'Anton', sans-serif",
+                    fontSize: "20px",
+                    color: COLORS.yellow,
+                    margin: 0,
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  SNATCHATHON QUARTER
+                </h3>
+                <span
+                  style={{
+                    fontSize: "10px",
+                    padding: "3px 8px",
+                    background: COLORS.yellow,
+                    color: COLORS.black,
+                    fontWeight: "800",
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  25% VOLUME
+                </span>
+              </div>
+              <p style={{ fontSize: "13px", color: COLORS.cream, margin: "0 0 16px 0", lineHeight: "1.5" }}>
+                A sprint-style workout with 500m erg efforts and reps cut by one fourth (do a snatch pull for the half reps). Perfect for a quick engine builder, high-intensity interval day, or pre-event primer.
+              </p>
+            </div>
+            <div style={{ fontSize: "11px", color: COLORS.dim, fontWeight: "700", letterSpacing: "0.06em" }}>
+              • 70 TOTAL REPS • 3KM MONOSTRUCTURAL
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ height: "1px", background: "#2a2a26", margin: "32px 0" }} />
+
+      {/* Corporate Sponsors & Partners Section */}
+      <div style={{ textAlign: "center" }}>
+        <h3
+          style={{
+            fontFamily: "'Anton', sans-serif",
+            color: COLORS.yellow,
+            fontSize: "22px",
+            letterSpacing: "0.04em",
+            margin: "0 0 16px 0",
+            textTransform: "uppercase",
+          }}
+        >
+          Sponsors & Partners
+        </h3>
+        
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+            gap: "12px",
+            alignItems: "center",
+          }}
+        >
+          {["Equipment Partner", "Nutrition & Hydration", "Apparel Partner", "Recovery & Wellness"].map((partner, index) => (
+            <div
+              key={index}
+              style={{
+                border: "1px dashed #2a2a26",
+                padding: "18px 12px",
+                background: "#0a0a09",
+                color: COLORS.dim,
+                fontSize: "11px",
+                fontWeight: "700",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
+              {partner}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -432,12 +622,14 @@ export default function SnatchathonFlyer() {
 
         <WeightClassTable />
 
+        <TrainingAndSponsors />
+
         <HazardStripe />
 
         {/* Footer */}
         <footer style={{ padding: "26px 28px 32px", textAlign: "center" }}>
           <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 22, color: COLORS.yellow, letterSpacing: ".02em" }}>
-            GET IN
+            GET IN!
           </div>
           <div style={{ border: `2px solid ${COLORS.yellow}`, padding: "18px 16px", marginTop: 6 }}>
             <div style={{ fontSize: 12.5, color: COLORS.cream, lineHeight: 1.5 }}>
