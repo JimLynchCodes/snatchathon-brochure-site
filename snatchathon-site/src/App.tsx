@@ -93,6 +93,122 @@ function HazardStripe() {
   );
 }
 
+// Design Palette matching the dark industrial Snatchathon flyer aesthetic
+// const COLORS = {
+//   black: "#0c0c0c",
+//   yellow: "#ffd400",
+//   cream: "#f4f1e8",
+//   dim: "#8a8a82",
+//   rowBgHover: "#141412"
+// };
+
+const WEIGHT_CLASSES = [
+  { weight: 10,  colorName: "Pink",   hex: "#ff69b4", utility: "Ultra-Light / Technique Work" },
+  { weight: 20,  colorName: "White",  hex: "#ffffff", utility: "Warm-Up / Core Prep" },
+  { weight: 35,  colorName: "Tan",    hex: "#d2b48c", utility: "Light Working Set" },
+  { weight: 50,  colorName: "Maroon", hex: "#800000", utility: "Light-Medium Threshold" },
+  { weight: 65,  colorName: "Orange", hex: "#ff8c00", utility: "Medium Working Set" },
+  { weight: 80,  colorName: "Teal",   hex: "#008080", utility: "Medium-Heavy Threshold" },
+  { weight: 95,  colorName: "Green",  hex: "#228b22", utility: "Heavy Working Set" },
+  { weight: 115, colorName: "Yellow", hex: "#ffd400", utility: "Advanced Strength" },
+  { weight: 135, colorName: "Blue",   hex: "#1e90ff", utility: "Standard Milestone (1-Plate)" },
+  { weight: 160, colorName: "Red",    hex: "#ff0000", utility: "High-Tier Working Weight" },
+  { weight: 190, colorName: "Brown",  hex: "#8b4513", utility: "Elite Strength Threshold" },
+  { weight: 225, colorName: "Black",  hex: "#333333", utility: "Heavy Milestone (2-Plate)" },
+  { weight: 265, colorName: "Steel",  hex: "#a9a9a9", utility: "Super-Heavy Working Weight" },
+  { weight: 315, colorName: "Gold",   hex: "#d4af37", utility: "Top Tier Milestone (3-Plate)" },
+];
+
+export function WeightClassTable() {
+  return (
+    <div style={{ 
+      background: COLORS.black, 
+      padding: "24px", 
+      fontFamily: "'Archivo', sans-serif",
+      color: COLORS.cream,
+      maxWidth: "760px",
+      margin: "0 auto",
+      border: "1px solid #2a2a26",
+    }}>
+      {/* Table Header Section */}
+      <div style={{ marginBottom: "20px" }}>
+        <h2 style={{ 
+          fontFamily: "'Anton', sans-serif", 
+          color: COLORS.yellow, 
+          fontSize: "28px", 
+          letterSpacing: "0.04em",
+          margin: "0 0 4px 0",
+          textTransform: "uppercase"
+        }}>
+          Weight Class Color Coding
+        </h2>
+        <p style={{ color: COLORS.dim, fontSize: "14px", margin: "1rem" }}>
+          Each weight class will have a winner and runner up for each gender category, scored by fastest times.
+        </p>
+      </div>
+
+      {/* Responsive Table Wrapper */}
+      <div style={{ overflowX: "auto", display: "flex", justifyContent: "center" }}>
+        <table style={{ 
+          width: "80%", 
+          alignItems: "center",
+          borderCollapse: "collapse", 
+          textAlign: "center",
+          fontSize: "14px"
+        }}>
+          <thead>
+            <tr style={{ borderBottom: `2px solid ${COLORS.yellow}` }}>
+              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px" }}>WEIGHT</th>
+              <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow, width: "120px", textAlign: "left"}}>COLOR CODE</th>
+              {/* <th style={{ padding: "12px 16px", fontWeight: "800", color: COLORS.yellow }}>GYM UTILITY</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {WEIGHT_CLASSES.map((item, index) => (
+              <tr 
+                key={index} 
+                style={{ 
+                  borderBottom: "1px solid #2a2a26",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = COLORS.cream}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
+              >
+                {/* Weight Cell */}
+                <td style={{ padding: "14px 16px", fontWeight: "700", fontFamily: "'Anton', sans-serif", fontSize: "18px", letterSpacing: "0.02em" }}>
+                  {item.weight} <span style={{ fontSize: "11px", fontFamily: "'Archivo', sans-serif", color: COLORS.dim, fontWeight: "500" }}>LBS</span>
+                </td>
+                
+                {/* Color Dot + Name Cell */}
+                <td style={{ padding: "14px 16px", fontWeight: "600" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", textAlign: "center" }}>
+                    <span style={{ 
+                      // display: "inline-block", 
+                      width: "14px", 
+                      height: "14px", 
+                      borderRadius: "50%", 
+                      background: item.hex,
+                      border: item.colorName === "White" ? "1px solid #555" : "none",
+                      boxShadow: item.colorName === "Black" ? "0 0 0 1px #444" : "none"
+                    }} />
+                    {item.colorName}
+                  </div>
+                </td>
+                
+                {/* Utility Context Cell */}
+                {/* <td style={{ padding: "14px 16px", color: COLORS.dim, fontWeight: "500" }}>
+                  {item.utility}
+                </td> */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+
 export default function SnatchathonFlyer() {
   return (
     <div
@@ -283,10 +399,10 @@ export default function SnatchathonFlyer() {
               letterSpacing: ".24em",
               fontWeight: 700,
               color: COLORS.dim,
-              margin: "2px 0 10px",
+              margin: "1rem 0",
             }}
           >
-            ▼ CROSS THE LINE
+            ▼ CROSS THE FINISH LINE
           </div>
         </div>
 
@@ -296,11 +412,12 @@ export default function SnatchathonFlyer() {
             display: "flex",
             justifyContent: "center",
             gap: 24,
-            padding: "22px 20px 6px",
+            // padding: "22px 20px 6px",
             fontSize: 10.5,
             fontWeight: 700,
             letterSpacing: ".1em",
             color: COLORS.dim,
+            marginBottom: "2rem"
           }}
         >
           <span>
@@ -312,6 +429,8 @@ export default function SnatchathonFlyer() {
             MACHINE
           </span>
         </div>
+
+        <WeightClassTable />
 
         <HazardStripe />
 
