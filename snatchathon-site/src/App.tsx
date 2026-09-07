@@ -340,7 +340,7 @@ export function TrainingAndSponsors() {
                 </span>
               </div>
               <p style={{ fontSize: "13px", color: COLORS.cream, margin: "0 0 16px 0", lineHeight: "1.5" }}>
-                A sprint-style workout with 500m erg efforts and reps cut by one fourth (do a snatch pull for the half reps). Perfect for a quick engine builder, high-intensity interval day, or pre-event primer.
+                A sprint-style workout with 500m erg efforts and reps cut by one fourth (do a snatch high pull for the half reps). Perfect for a quick engine builder, high-intensity interval day, or pre-event primer.
               </p>
             </div>
             <div style={{ fontSize: "11px", color: COLORS.dim, fontWeight: "700", letterSpacing: "0.06em" }}>
